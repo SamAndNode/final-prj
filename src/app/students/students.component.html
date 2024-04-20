@@ -1,0 +1,33 @@
+<button (click)="createStudent()">Create New Student</button>
+<table>
+    
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Operations</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ student.id }}</td>
+      <td>{{ student.name }}</td>
+
+      <td>
+        <button (click)="editStudent(student)">Edit</button>
+        <button (click)="deleteStudent(student)">Delete</button>
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>
+
+
+<form *ngIf="isFormVisible" (ngSubmit)="saveStudent()">
+
+    <input type="text" [(ngModel)]="formData.name" name="name" placeholder="Enter Name">
+    <button type="submit">{{ isEditMode ? 'Update' : 'Create' }}</button>
+</form>
